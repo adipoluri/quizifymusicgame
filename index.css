@@ -1,10 +1,10 @@
 body{
+    font-family: 'Righteous', cursive;
     margin: 0;
     padding: 0;
     background-color: #19E68C;
 }
 #banner{
-    font-family: 'Righteous', cursive;
     height: 5em;
     background-color: black;
     color:white;
@@ -12,4 +12,69 @@ body{
 #banner>h1{
     padding:0.5em;
     margin:0%;
+}
+
+#button{
+    font-family: 'Righteous', cursive;
+    background-color: #DB8585;
+    border: 1px solid black;
+    color: black;
+    font-weight: bold;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 50%;
+    width: auto;
+    height: auto;
+}
+
+#buttonDiv{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+    padding: 20px 20px 20px 20px;
+}
+
+
+#navBar{
+    float: right;
+    height: 5em;
+    padding-right: 20px;
+    padding-top: 12px;
+}
+
+ul li{
+    list-style: none;
+    display: inline-block;
+    float: left;
+    height: 5em;
+}
+
+ul li a{
+    font-family: 'Righteous', cursive;
+    display: block;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 0 20px;
+    color: white;
+    
+}
+
+#info, #gameInfo{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+}
+
+.hide{
+    display: none;
+}
+
+.show{
+    display: inline-block;
 }

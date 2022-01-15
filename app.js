@@ -8,3 +8,9 @@ const app = Vue.createApp({
 })
 
 app.mount('#app')
+
+
+function showHideRoomCode(){
+    document.getElementById('roomCodeInput').className="show";
+    document.getElementById('submitRoomCode').className="show";
+}
