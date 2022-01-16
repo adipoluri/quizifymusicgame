@@ -1,1 +1,1 @@
-### Quizify Music Guessing Game
+# Quizify Music Guessing Game
