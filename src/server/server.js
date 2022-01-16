@@ -62,8 +62,8 @@ function connected(socket){
         console.log("players dictionary: ", currentLobby.players);
 
         socket.join(data);
-        io.to(roomID).emit('updatePlayers', currentLobby.players);
         io.to(socket.id).emit('joinedRoomSuccess', newRoomID);   
+        io.to(roomID).emit('updatePlayers', currentLobby.players);
       }
     }
   });

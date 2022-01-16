@@ -4,6 +4,9 @@ const socket = io('http://localhost:3000');
 
 let clientPlayers = {};
 
+
+
+//Landing Page Code
 const creatRoomButton = document.getElementById('createRoomButton');
 const nameInput = document.getElementById('playerName');
 const submitRoomCodeButton = document.getElementById('submitRoomCode');
@@ -11,8 +14,6 @@ const roomCodeInput = document.getElementById('roomCodeInput');
 
 //Joining lobby for game
 creatRoomButton.addEventListener('click', () => {
-    document.getElementById('home').style.display = "none"
-    document.getElementById('testdiv').style.display = "block"
     socket.emit('CreateRoom', {});
 });
 
@@ -33,8 +34,11 @@ submitRoomCodeButton.addEventListener('click', () => {
 });
 
 socket.on('joinedRoomSuccess', roomID => {
-    //CHANGE HTML PAGE
+    document.getElementById('home').style.display = "none"
+    document.getElementById('testdiv').style.display = "block"
 })
+
+
 
 //Callback function fires on the event called 'serverToClient'
 socket.on('updatePlayers', players => {
@@ -52,3 +56,7 @@ socket.on('updatePlayers', players => {
         }
     }
 })
+
+
+//Lobby Code
+
