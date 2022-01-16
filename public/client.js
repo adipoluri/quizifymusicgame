@@ -193,7 +193,7 @@ function updateGame() {
         if(name != null){
         name.innerHTML = clientPlayers[id].name;
         }
-        let score = document.getElementById('playerScore' + counter).innerHTML = clientPlayers[id].score;
+        let score = document.getElementById('playerScore' + counter);
         if(score != null){
             score.innerHTML = clientPlayers[id].score;
         }
