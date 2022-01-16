@@ -71,7 +71,7 @@ function connected(socket){
 
         currentLobby = rooms[roomID]
 
-        if(currentLobby.playerCount >= 8){
+        if(currentLobby.playerCount >= 8 && !room[roomID].ingame){
           return;
         }
         
@@ -121,7 +121,7 @@ function startGame(id){
   
   var counter = 12;
   var rounds = 0;
-
+  rooms[id].ingame = true;
 
   var WinnerCountdown = setInterval(function(){
     if(rooms[id] == undefined){
@@ -160,6 +160,7 @@ function startGame(id){
         for(let player in rooms[id].players) {
           io.to(player).emit('updatePlayers', rooms[id].players);
         }
+        rooms[id].ingame = false;
       },10000);
   
     }
@@ -248,6 +249,7 @@ class Room{
       this.id = id;
       this.players = {};
       this.playerCount = 0;
+      this.ingame = false;
   }
 }
 
