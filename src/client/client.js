@@ -19,7 +19,7 @@ creatRoomButton.addEventListener('click', () => {
 
 socket.on('createdRoomSuccess', roomID => {
     let name = nameInput.value
-    if(name == 'Guest'){
+    if(name == ''){
         name = 'Guest' + Math.floor(Math.random() * 1000);
     }
     socket.emit('JoinRoomWithCode', {"roomID": roomID, "name": name});
@@ -27,7 +27,7 @@ socket.on('createdRoomSuccess', roomID => {
 
 submitRoomCodeButton.addEventListener('click', () => {
     let name = nameInput.value
-    if(name == 'Guest'){
+    if(name == ''){
         name = 'Guest' + Math.floor(Math.random() * 1000);
     }
     socket.emit('JoinRoomWithCode', {"roomID": roomCodeInput.value, "name": name});
