@@ -131,3 +131,57 @@ ul li a{
     transform: translateY(-4rem);
   }
   
+#playerTable{
+    color: black;
+}
+
+#joinCode{
+    font-family: 'Righteous', cursive;
+    background-color: black;
+    color: white;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+#players{
+    display: flex;
+}
+
+#others{
+    display:flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+}
+
+#others>div{
+    display:inline-block;
+    width: 20em;
+    margin: auto;
+}
+
+#startGameButton{
+    font-family: 'Righteous', cursive;
+    background-color: black;
+    color: white;
+    margin: auto;
+    width: 100%;
+    padding: 10px;
+}
+
+#player{
+    width: 100%;
+    padding-left: 0.0008%;
+}
+
+#playerDiv{
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: auto;
+    margin-left: 15.5%;
+}
+
+#playerDiv > div{
+    flex: 25%;
+}
+
