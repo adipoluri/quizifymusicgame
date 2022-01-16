@@ -9,36 +9,40 @@ body{
     background-color: black;
     color:white;
 }
-#imageBanner>h1{
-    display: inline-block;
-    margin: 0%;
-}
 
 #imageBanner{
     display:inline-block;
+    height: 100%;
 }
 
-#title{
-    justify-content: center;
-    padding-bottom: 50px;
+#imageBanner>img{
+    display: inline-block;
+    height:100%;
 }
 
 #joinRoomButton, #createRoomButton{
     font-family: 'Righteous', cursive;
-    background-color: #DB8585;
-    border: 1px solid black;
+    background-color: #FFFFFF;
+    border:0.1em solid #FFFFFF;
     color: black;
-    font-weight: bold;
+    font-weight:300;
     padding: 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
-    border-radius: 50%;
+    border-radius: 0.5em;
+    box-sizing: border-box;
     width: auto;
     height: auto;
+    transition: all 0.3s;
 }
+
+#joinRoomButton:hover, #createRoomButton:hover{
+    color:#ffffff;
+    background-color:#000000;
+    }
 
 #buttonDiv{
     margin: auto;
