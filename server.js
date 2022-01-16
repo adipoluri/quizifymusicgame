@@ -119,7 +119,7 @@ function connected(socket){
 
 function startGame(id){
   
-  var counter = 30;
+  var counter = 12;
   var rounds = 0;
 
 
@@ -134,13 +134,13 @@ function startGame(id){
       io.to(player).emit('counter', counter);
     }
 
-    if (counter === 30) {
+    if (counter === 12) {
       Qdata = getNextQuestionData();
       for(let player in rooms[id].players) {
         io.to(player).compress(false).emit('nextRound', Qdata);
       }
     } else if(counter === 0) {
-      counter = 31;
+      counter = 13;
       rounds += 1;
     }
 
