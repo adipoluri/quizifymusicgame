@@ -189,7 +189,7 @@ function updateGame() {
     for(let id in clientPlayers) {
         document.getElementById('scoreboard' + index).style.display = "block";
         document.getElementById('playerName' + index).innerHTML = clientPlayers[id].name;
-        document.getElementById('ps' + index).innerHTML = clientPlayers[id].score;
+        document.getElementById('playerScore' + index).innerHTML = clientPlayers[id].score;
         index += 1;
         console.log(clientPlayers[id].score)
     }
