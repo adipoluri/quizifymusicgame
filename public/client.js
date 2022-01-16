@@ -187,9 +187,9 @@ button4.addEventListener('click', () => {
 function updateGame() {
     index = 0; 
     for(let id in clientPlayers) {
-        document.getElementById('scoreboard' + counter).style.display = "block";
-        document.getElementById('playerName' + counter).innerHTML = clientPlayers[id].name;
-        document.getElementById('playerScore' + counter).innerHTML = clientPlayers[id].score;
+        document.getElementById('scoreboard' + index).style.display = "block";
+        document.getElementById('playerName' + index).innerHTML = clientPlayers[id].name;
+        document.getElementById('playerScore' + index).innerHTML = clientPlayers[id].score;
         index += 1;
         console.log(clientPlayers[id].score)
     }
