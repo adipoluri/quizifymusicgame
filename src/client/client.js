@@ -55,7 +55,7 @@ socket.on('updatePlayers', players => {
     playersFound = {};
     for(let id in players) {
         if(clientPlayers[id] === undefined){
-            clientPlayers[id] = new Player(players[id].name);
+            clientPlayers[id] = new Player(players[id].name, players[id].score);
         }
         playersFound[id] = true;
     }
@@ -106,16 +106,24 @@ function updateLobby() {
 
 
 //GAME CODE
-function updateGame() {
 
+
+
+const button1 = document.getElementById('button1');
+button1.addEventListener('click', () => {
+    alert("HAMING")
+});
+
+function updateGame() {
     counter = 0;
     for(let id in clientPlayers) {
-        document.getElementById('p' + counter).style.display = "block";
-        document.getElementById('p' + counter + "_name").innerHTML = clientPlayers[id].name;
+        document.getElementById('scoreboard' + counter).style.display = "block";
+        document.getElementById('playerName' + counter).innerHTML = clientPlayers[id].name;
+        document.getElementById('playerScore' + counter).innerHTML = clientPlayers[id].score + " points";
         counter++;
     }
     for(let i = counter; i < 8; i++) {
-        document.getElementById('p' + i).style.display = "none";
+        document.getElementById('scoreboard' + i).style.display = "none";
         counter++;
     }
 }

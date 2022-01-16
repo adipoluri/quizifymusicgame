@@ -71,7 +71,7 @@ function connected(socket){
           return;
         }
         
-        currentLobby.players[socket.id] = new Player(data.name, roomID);
+        currentLobby.players[socket.id] = new Player(data.name, roomID, 0);
         currentLobby.playerCount += 1;
         players[socket.id] = currentLobby.players[socket.id];
         
@@ -91,7 +91,13 @@ function connected(socket){
 
   socket.on('startGame', () => {
     console.log("Game Started");
-    io.to(socket.id).emit('gameStartedSuccess', "LIGMA");
+    for(let player in rooms[players[socket.id].lobby].players) {
+      io.to(player).emit('gameStartedSuccess', "LIGMA");
+    }
+
+    for(let player in rooms[players[socket.id].lobby].players) {
+      io.to(player).emit('updatePlayers', currentLobby.players);
+    }
   })
 
 }
@@ -122,8 +128,9 @@ class Room{
 
 //Player Class
 class Player{
-  constructor(name, lobby){
+  constructor(name, lobby,score){
       this.name = name;
       this.lobby = lobby;
+      this.score = score;
   }
 }
