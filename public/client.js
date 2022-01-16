@@ -237,6 +237,30 @@ socket.on('EndGame', roomID => {
     inLobby = false;
     inGame = false;
 
+    max = 0;
+    maxPlayer = "";
+    for(let player in clientPlayers){
+        if(clientPlayers[player].score > max){
+            max = clientPlayers[player].score;
+            maxPlayer = player;
+        }
+    }
+
+    document.getElementById('player0').innerHTML = clientPlayers[maxPlayer].name;
+    document.getElementById('score1').innerHTML = max
+
+    index = 0; 
+    for(let id in clientPlayers) {
+        if(id != maxPlayer){
+            document.getElementById('player' + index).innerHTML = clientPlayers[id].name;
+            document.getElementById('score' + index + 1).innerHTML = clientPlayers[id].score;    
+        }
+
+        index += 1;
+        console.log(clientPlayers[id].score)
+    }
+
+
     
 })
 
