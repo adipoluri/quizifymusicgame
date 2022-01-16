@@ -6,6 +6,7 @@ const request = require('request')
 
 const app = express();
 const port = process.env.PORT || 5500;
+app.use(express.static('public'));
 const server = http.createServer(app);
 
 const io = new Server(server, {
@@ -15,9 +16,7 @@ const io = new Server(server, {
   }
 });
 
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
-})
+app.get('/', (req, res) => res.sendFile(__dirname + '/index.html'));
 
 
 server.listen(port, () => {
