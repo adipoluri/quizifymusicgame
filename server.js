@@ -71,7 +71,7 @@ function connected(socket){
 
         currentLobby = rooms[roomID]
 
-        if(currentLobby.playerCount >= 8 && !room[roomID].ingame){
+        if(currentLobby.playerCount >= 8 || room[roomID].ingame){
           return;
         }
         
