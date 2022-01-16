@@ -1,12 +1,30 @@
 // NET CODE //
-
 //Establishing a connection with the server on port 5500y
 const socket = io('http://localhost:3000');
 
 let clientPlayers = {};
 
-//sending the initial positions to the server
-socket.emit('newPlayer', "ligma");
+const creatRoomButton = document.getElementById('createRoomButton');
+const nameInput = document.getElementById('playerName');
+const submitRoomCodeButton = document.getElementById('submitRoomCode');
+const roomCodeInput = document.getElementById('roomCodeInput');
+
+//Joining lobby for game
+creatRoomButton.addEventListener('click', () => {
+    //FOR TESTING ADD CHANGE
+    socket.emit('CreateRoom', {});
+});
+
+socket.on('createRoomSuccess', roomID => {
+    socket.emit('JoinRoomWithCode', {"roomID": roomID, "name": nameInput.value});
+    //CHANGE HTML PAGE
+})
+
+submitRoomCodeButton.addEventListener('click', () => {
+    //FOR TESTING ADD CHANGE
+    socket.emit('JoinRoomWithCode', {"roomID": textInput.value, "name": nameInput.value});
+});
+
 
 //Callback function fires on the event called 'serverToClient'
 socket.on('updatePlayers', players => {
@@ -24,13 +42,3 @@ socket.on('updatePlayers', players => {
         }
     }
 })
-
-socket.on('createRoomSuccess', roomID => {
-    socket.emit('JoinRoomWithCode', {"roomID": roomID, "name": "ligma"});
-})
-
-
-let audio_iframe = document.querySelector('iframe');
-
-widget = SC.Widget(audio_iframe);
-widget.setVolume(0);

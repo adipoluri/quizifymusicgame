@@ -22,7 +22,6 @@
           <h1 id="title">SPOTIFY GUESSING GAME</h1>
       </div>
     </div>
-
     <div id="info">
       <h1 id="title">Welcome to Spotify Guessing Game</h1>
       <h3 id="gameInfo">No need to register, get started by creating a room below and inviting friends or by joining a pre-made room to compete against friends!</h3>
@@ -32,13 +31,13 @@
 
     <div id="name">
       <h3 id="gameInfo">Enter your name:</h3>
-      <input id="playerName">
+      <input id="playerName" type="text">
       <button>Change Name</button>
     </div>
 
     <div id="buttonDiv">
-      <button href="lobby.html" id="button" onclick="showHideRoomCode()">Enter Code</button>
-      <button id="button">Create Room</button>
+      <button href="lobby.html" id="joinRoomButton" onclick="showHideRoomCode()">Enter Code</button>
+      <button id="createRoomButton">Create Room</button>
       <div id="inputBox">
         <input class="hide" id="roomCodeInput" type="text" id="textInput"/>
         <input class="hide" type="submit" id="submitRoomCode"/>
@@ -46,7 +45,7 @@
     </div>
 
   </div>
-  
+
   <script src="https://cdn.socket.io/4.4.1/socket.io.js"></script>
   <script src="player.js"></script>
   <script src="client.js"></script>
