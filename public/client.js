@@ -1,7 +1,4 @@
 // NET CODE //
-
-const e = require("express");
-
 //Establishing a connection with the server on port 5500y
 const socket = io.connect();
 
@@ -92,7 +89,8 @@ socket.on('updatePlayers', players => {
     console.log(clientPlayers);
     if(inLobby){
         updateLobby();
-    } else if(inGame) {
+    }
+    if(inGame){
         updateGame();
     }
 })
@@ -187,19 +185,21 @@ button4.addEventListener('click', () => {
 
 
 function updateGame() {
-    index = 0;
+    if(document.getElementById('lobbyDiv') == null) {
+        index = 0; 
+        for(let id in clientPlayers) {
+            document.getElementById('scoreboard' + counter).style.display = "block";
+            document.getElementById('playerName' + counter).innerHTML = clientPlayers[id].name;
+            document.getElementById('playerScore' + counter).innerHTML = clientPlayers[id].score;
+            index += 1;
+            console.log(clientPlayers[id].score)
+        }
+        for(let i = index; i < 8; i++) {
+            document.getElementById('scoreboard' + i).style.display = "none";
+            index += 1;
+        }
+    }
 
-    for(let id in clientPlayers) {
-        document.getElementById('scoreboard' + counter).style.display = "block";
-        document.getElementById('playerName' + counter).innerHTML = clientPlayers[id].name;
-        document.getElementById('playerScore' + counter).innerHTML = clientPlayers[id].score;
-        index += 1;
-        console.log(clientPlayers[id].score)
-    }
-    for(let i = index; i < 8; i++) {
-        document.getElementById('scoreboard' + i).style.display = "none";
-        index += 1;
-    }
 }
 
 
