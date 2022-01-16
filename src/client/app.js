@@ -15,5 +15,11 @@ function showHideRoomCode(){
     document.getElementById('submitRoomCode').className="show";
 }
 
+function alertBoxExit(){
+    if(confirm("Are you sure you want to exit?") == true){
+        location.replace("index.html");
+    }
+}
+
 
 

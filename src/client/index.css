@@ -16,12 +16,12 @@ body{
     height: 100%;
 }
 
-#imageBanner>img{
+#imageBanner>a>img{
     display: inline-block;
     height:100%;
 }
 
-#joinRoomButton, #createRoomButton{
+#joinRoomButton, #createRoomButton, #button1, #button2, #button3, #button4{
     font-family: 'Righteous', cursive;
     background-color: #FFFFFF;
     border:0.1em solid #FFFFFF;
@@ -40,7 +40,7 @@ body{
     transition: all 0.3s;
 }
 
-#joinRoomButton:hover, #createRoomButton:hover{
+#joinRoomButton:hover, #createRoomButton:hover, #button1:hover, #button2:hover, #button3:hover, #button4:hover{
     color:#ffffff;
     background-color:#000000;
     }
@@ -169,6 +169,13 @@ ul li a{
     padding: 10px;
 }
 
+/** Point counter for game.html **/
+#penis{
+    position: absolute;
+    top: 200px;
+    left: 70px;
+}
+
 #player{
     width: 100%;
     padding-left: 0.0008%;
@@ -181,7 +188,33 @@ ul li a{
     margin-left: 15.5%;
 }
 
-#playerDiv > div{
-    flex: 25%;
+/** Players in game.html, aligns them into the center of screen, should work with mobile devices **/
+#scoreboardDiv{
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+}
+
+#scoreboardDiv>div{
+    position: relative;
+}
+
+#question{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#answers{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    padding-top: 1%;
+}
+
+#button1, #button2, #button3, #button4{
+    display: flex;
+    flex-basis: 50%;
 }
 
