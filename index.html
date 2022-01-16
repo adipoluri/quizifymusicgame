@@ -1,18 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8">
+  <title></title>
+  <link href="index.css" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+  <script src="app.js"></script>
 </head>
 <body>
-    <iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3&view=coverart" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-    <p id="p1">Current Lobby: </p>
+  <div id="app">
+    <div id="banner">
+      <nav id="navBar">
+        <ul> 
+        <li><a href="#">How To Play</a></li>
+      </ul>
+      </nav>
+      <div id="imageBanner">
+        <img src="img/SpotifyLogo.png">
+          <h1 id="title">SPOTIFY GUESSING GAME</h1>
+      </div>
+    </div>
 
-    
-    <script src="https://cdn.socket.io/4.4.1/socket.io.js"></script>
-    <script src="player.js"></script>
-    <script src="client.js"></script>
+    <div id="info">
+      <h1 id="title">Welcome to Spotify Guessing Game</h1>
+      <h3 id="gameInfo">No need to register, get started by creating a room below and inviting friends or by joining a pre-made room to compete against friends!</h3>
+      <br/>
+      <h3 id="gameInfo">Don't know how to play? Click the 'How To Play' button on the top to learn more!</h3>
+    </div>
+
+    <div id="name">
+      <h3 id="gameInfo">Enter your name:</h3>
+      <input id="playerName">
+      <button>Change Name</button>
+    </div>
+
+    <div id="buttonDiv">
+      <button href="lobby.html" id="button" onclick="showHideRoomCode()">Enter Code</button>
+      <button id="button">Create Room</button>
+      <div id="inputBox">
+        <input class="hide" id="roomCodeInput" type="text" id="textInput"/>
+        <input class="hide" type="submit" id="submitRoomCode"/>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
 </body>
 </html>
