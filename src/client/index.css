@@ -247,6 +247,17 @@ ul li a{
     flex-wrap:wrap;
 }
 
+#scoreboardDiv2{
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    display: inline-flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+}
+
+
 #scoreboardDiv>div{
     position: relative;
 }
