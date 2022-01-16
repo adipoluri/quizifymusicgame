@@ -1,0 +1,23 @@
+{
+  "name": "musicgame",
+  "version": "1.0.0",
+  "description": "a project for nwhacks2022",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adipoluri/nwhacks2022.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adipoluri/nwhacks2022/issues"
+  },
+  "homepage": "https://github.com/adipoluri/nwhacks2022#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "socket.io": "^4.4.1"
+  }
+}
