@@ -134,7 +134,7 @@ button1.addEventListener('click', () => {
             socket.emit('addScore', {});
             alert("Correct!");
         } else {
-            alert("Wrong!");
+            alert("Wrong!, the correct answer is " + questionData['answer']);
         }
     }
     notGuessed = false;
@@ -148,7 +148,7 @@ button2.addEventListener('click', () => {
             socket.emit('addScore', {});
             alert("Correct!");
         } else {
-            alert("Wrong!");
+            alert("Wrong!, the correct answer is " + questionData['answer']);
         }
     }    
     notGuessed = false;
@@ -162,7 +162,7 @@ button3.addEventListener('click', () => {
             socket.emit('addScore', {});
             alert("Correct!");
         } else {
-            alert("Wrong!");
+            alert("Wrong!, the correct answer is " + questionData['answer']);
         }
     }   
     notGuessed = false;
@@ -176,7 +176,7 @@ button4.addEventListener('click', () => {
             socket.emit('addScore', {});
             alert("Correct!");
         } else {
-            alert("Wrong!");
+            alert("Wrong!, the correct answer is " + questionData['answer']);
         }
     }    
     notGuessed = false;
