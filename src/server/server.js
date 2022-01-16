@@ -1,11 +1,12 @@
-const { RSA_PKCS1_PADDING } = require('constants');
+const fs = require('fs');
 const express = require('express');
+const http = require('http');
+const { Server } = require("socket.io");
+
 const app = express();
 const port = 3000;
-const http = require('http');
 const server = http.createServer(app);
 
-const { Server } = require("socket.io");
 const io = new Server(server, {
   cors: {
     origin: "http://localhost:5500",
@@ -20,6 +21,7 @@ server.listen(port, () => {
 //Data structure for players
 let rooms = {};
 let players = {};
+let ket = getKeys();
 
 io.on('connection',connected);
 
@@ -134,3 +136,29 @@ class Player{
       this.score = score;
   }
 }
+
+//Obtain API Keys
+function getKeys(){
+    let rawdata = fs.readFileSync('src\\server\\apikeys.json');
+    let apiKeys = JSON.parse(rawdata);
+    console.log(apiKeys);
+    return apiKeys;
+}
+
+
+// var authOptions = {
+//   url: 'https://accounts.spotify.com/api/token',
+//   headers: {
+//     'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64'))
+//   },
+//   form: {
+//     grant_type: 'client_credentials'
+//   },
+//   json: true
+// };
+
+// request.post(authOptions, function(error, response, body) {
+//   if (!error && response.statusCode === 200) {
+//     var token = body.access_token;
+//   }
+// });
