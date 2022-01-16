@@ -185,19 +185,17 @@ button4.addEventListener('click', () => {
 
 
 function updateGame() {
-    if(document.getElementById('lobbyDiv').style.display == "none") {
-        index = 0; 
-        for(let id in clientPlayers) {
-            document.getElementById('scoreboard' + counter).style.display = "block";
-            document.getElementById('playerName' + counter).innerHTML = clientPlayers[id].name;
-            document.getElementById('playerScore' + counter).innerHTML = clientPlayers[id].score;
-            index += 1;
-            console.log(clientPlayers[id].score)
-        }
-        for(let i = index; i < 8; i++) {
-            document.getElementById('scoreboard' + i).style.display = "none";
-            index += 1;
-        }
+    index = 0; 
+    for(let id in clientPlayers) {
+        document.getElementById('scoreboard' + counter).style.display = "block";
+        document.getElementById('playerName' + counter).innerHTML = clientPlayers[id].name;
+        document.getElementById('playerScore' + counter).innerHTML = clientPlayers[id].score;
+        index += 1;
+        console.log(clientPlayers[id].score)
+    }
+    for(let i = index; i < 8; i++) {
+        document.getElementById('scoreboard' + i).style.display = "none";
+        index += 1;
     }
 
 }
