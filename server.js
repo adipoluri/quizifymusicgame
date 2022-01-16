@@ -122,6 +122,7 @@ function startGame(id){
   var counter = 12;
   var rounds = 0;
   rooms[id].ingame = true;
+
   var WinnerCountdown = setInterval(function(){
     if(rooms[id] == undefined){
       return;
