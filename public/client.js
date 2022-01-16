@@ -185,7 +185,7 @@ button4.addEventListener('click', () => {
 
 
 function updateGame() {
-    if(document.getElementById('lobbyDiv') == null) {
+    if(document.getElementById('lobbyDiv').style.display == "none") {
         index = 0; 
         for(let id in clientPlayers) {
             document.getElementById('scoreboard' + counter).style.display = "block";
