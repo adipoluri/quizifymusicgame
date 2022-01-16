@@ -159,15 +159,77 @@
     <div id="question">
       <h1 id="title">Answer This Question</h1>
       <p id="question">Question QuestionQuestionQuestionQuestionQuestionQuestionQuestion</p>
-      <iframe src="https://open.spotify.com/embed/track/5pwqFOPir9wq1QHrIEaXkw?utm_source=generator&theme=0" width="30%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+      <p> Press the Image to play Song!</p>
+      <div id="spotifyWindow">
+        <iframe  id="spotify" src="https://open.spotify.com/embed/track/5pwqFOPir9wq1QHrIEaXkw?utm_source=generator&theme=0" width="30%" height="80" frameBorder="0" allowfullscreen=""  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+      </div>
     </div>
-  
+
     <div id="answers">
     <button id="button1">Answer 1</button>
     <button id="button2">Answer 2</button>
     <button id="button3">Answer 3</button>
     <button id="button4">Answer 4</button>
     </div>
+  </div>
+  
+
+  <!-- END SCREEN-->
+  <div id="endDiv">
+    <h1 id="winnerText">AND THE WINNER IS....</h1>
+    <div id="endGameScreen">
+      <div id="player0">
+        <h1 id="winner0">Player 1</h1>
+        <img src="../img/player0.png">
+        <p id="score1">0</p>
+      </div>
+    </div>
+
+    <div id="scoreboard">
+      
+      <div id="scoreboardDiv">
+
+        <div id="scoreboard1">
+          <h1 id="winner1">Player 2</h1>
+          <img src="../img/player1.png">
+          <p id="score2">0</p>
+        </div>
+        <div id="scoreboard2">
+          <h1 id="winner2">Player 3</h1>
+          <img src="../img/player2.png">
+          <p id="score3">0</p>
+        </div>
+        <div id="scoreboard3">
+          <h1 id="winner3">Player 4</h1>
+          <img src="../img/player3.png">
+          <p id="score4">0</p>
+        </div>
+        <div id="scoreboard4">
+          <h1 id="winner4">Player 5</h1>
+          <img src="../img/player4.png">
+          <p id="score5">0</p>
+        </div>
+        <div id="scoreboard5">
+          <h1 id="winner5">Player 6</h1>
+          <img src="../img/player5.png">
+          <p id="score6">0</p>
+        </div>
+        <div id="scoreboard6">
+          <h1 id="winner6">Player 7</h1>
+          <img src="../img/player6.png">
+          <p id="score7">0</p>
+        </div>
+        <div id="scoreboard7">
+          <h1 id="winner7">Player 8</h1>
+          <img src="../img/player7.png">
+          <p id="score8">0</p>
+        </div>
+
+      </div>
+    </div>
+      <h1 id="goodbyeMsg">THANKS FOR PLAYING THE SPOTIFY GUESSING GAME!</h1>
+      <h1 id="goodbyeMsg">YOU WILL BE RETURNED TO THE MAIN MENU IN A FEW SECONDS...</h1>
+    
   </div>
 
   <script src="https://cdn.socket.io/4.4.1/socket.io.js"></script>

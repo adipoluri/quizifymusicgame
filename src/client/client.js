@@ -37,8 +37,9 @@ joinRoomButton.addEventListener('click', () => {
 //LOBBY JOINING CODE
 creatRoomButton.addEventListener('click', () => {
     document.getElementById('home').style.display = "none"
-    document.getElementById('lobbyDiv').style.display = "block"
+    document.getElementById('lobbyDiv').style.display = "none"
     document.getElementById('gameDiv').style.display = "none"
+    document.getElementById('endDiv').style.display = "block"
     socket.emit('CreateRoom', {});
 });
 
@@ -62,6 +63,7 @@ socket.on('joinedRoomSuccess', roomID => {
     document.getElementById('home').style.display = "none"
     document.getElementById('lobbyDiv').style.display = "block"
     document.getElementById('gameDiv').style.display = "none"
+    document.getElementById('endDiv').style.display = "none"
     document.getElementById('joinCode').innerHTML = "The Join Code is: " + roomID;
     inLobby = true;
     inGame = false;
@@ -104,6 +106,7 @@ socket.on('gameStartedSuccess', roomID => {
     document.getElementById('home').style.display = "none"
     document.getElementById('lobbyDiv').style.display = "none"
     document.getElementById('gameDiv').style.display = "block"
+    document.getElementById('endDiv').style.display = "none"
     inLobby = false;
     inGame = true;
 })
@@ -137,7 +140,7 @@ function updateGame() {
     for(let id in clientPlayers) {
         document.getElementById('scoreboard' + counter).style.display = "block";
         document.getElementById('playerName' + counter).innerHTML = clientPlayers[id].name;
-        document.getElementById('playerScore' + counter).innerHTML = clientPlayers[id].score + " points";
+        document.getElementById('playerScore' + counter).innerHTML = clientPlayers[id].score;
         counter++;
     }
     for(let i = counter; i < 8; i++) {
@@ -145,4 +148,18 @@ function updateGame() {
         counter++;
     }
 }
+
+
+
+socket.on('EndGame', roomID => {
+    document.getElementById('home').style.display = "none"
+    document.getElementById('lobbyDiv').style.display = "none"
+    document.getElementById('gameDiv').style.display = "none"
+    document.getElementById('endDiv').style.display = "block"
+    inLobby = false;
+    inGame = false;
+})
+
+
+//END GAME CODE
 
