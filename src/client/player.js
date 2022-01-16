@@ -1,13 +1,7 @@
 //Player Class
 class Player{
-    constructor(name){
+    constructor(name, lobby){
         this.name = name;
-    }
-}
-
-class Room{
-    constructor(id){
-        this.id = id;
-        this.players = {};
+        this.lobby = lobby;
     }
 }
