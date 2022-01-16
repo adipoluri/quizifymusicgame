@@ -14,6 +14,8 @@ const roomCodeInput = document.getElementById('roomCodeInput');
 
 //Joining lobby for game
 creatRoomButton.addEventListener('click', () => {
+    document.getElementById('home').style.display = "none"
+    document.getElementById('testdiv').style.display = "block"
     socket.emit('CreateRoom', {});
 });
 
