@@ -1,3 +1,4 @@
+const { RSA_PKCS1_PADDING } = require('constants');
 const express = require('express');
 const app = express();
 const port = 3000;
@@ -31,12 +32,24 @@ app.get('/', (req, res) => {
 //For whenever a connection is established between the server and a client
 function connected(socket){
   socket.on('disconnect', function(){
-      delete rooms[players[socket.id].lobby].players[socket.id];
+      if(players[socket.id] != undefined){
+        delete rooms[players[socket.id].lobby].players[socket.id];
+        rooms[players[socket.id].lobby].playerCount -= 1;
+      }
       delete players[socket.id];
       console.log("Goodbye client with id "+ socket.id);
       console.log("Current number of players: "+ Object.keys(players).length);
+
       for(let room in rooms){
-        io.to(room).emit('updatePlayers', rooms[room].players);
+        for(let player in rooms[room].players) {
+          io.to(player).emit('updatePlayers', currentLobby.players);
+        }
+      }
+
+      for(let room in rooms){
+        if(rooms[room].playerCount == 0) {
+          delete rooms[room];
+        }
       }
       console.log(rooms);
   });
@@ -51,19 +64,27 @@ function connected(socket){
   socket.on('JoinRoomWithCode', data => {
     for(let roomID in rooms){
       if(roomID == data.roomID){
+
+        currentLobby = rooms[roomID]
+
+        if(currentLobby.playerCount >= 8){
+          return;
+        }
         
-        console.log("New client connected to Lobby, with id: "+ socket.id);
-
-        currentLobby =  rooms[roomID]
         currentLobby.players[socket.id] = new Player(data.name, roomID);
+        currentLobby.playerCount += 1;
         players[socket.id] = currentLobby.players[socket.id];
-
+        
+        console.log("New client connected to Lobby, with id: " + socket.id);
         console.log("Current number of players in Lobby: "+ Object.keys(currentLobby.players).length);
         console.log("players dictionary: ", currentLobby.players);
 
         socket.join(data);
-        io.to(socket.id).emit('joinedRoomSuccess', newRoomID);   
-        io.to(roomID).emit('updatePlayers', currentLobby.players);
+        io.to(socket.id).emit('joinedRoomSuccess', newRoomID);
+        
+        for(let player in currentLobby.players) {
+          io.to(player).emit('updatePlayers', currentLobby.players);
+        }
       }
     }
   });
@@ -89,6 +110,7 @@ class Room{
   constructor(id){
       this.id = id;
       this.players = {};
+      this.playerCount = 0;
   }
 }
 
