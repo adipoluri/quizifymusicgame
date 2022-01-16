@@ -169,6 +169,14 @@ ul li a{
     padding: 10px;
 }
 
+#player0{
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: auto;
+    justify-content: center;
+    margin-bottom: 3%;
+}
+
 /** Point counter for game.html **/
 .points{
     position: absolute;
@@ -226,5 +234,14 @@ ul li a{
 #button1, #button2, #button3, #button4{
     display: flex;
     flex-basis: 50%;
+}
+
+#winnerText{
+    text-align: center;
+}
+
+#goodbyeMsg{
+    padding-top: 1%;
+    text-align: center;
 }
 
