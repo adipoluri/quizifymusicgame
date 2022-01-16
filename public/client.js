@@ -185,24 +185,18 @@ button4.addEventListener('click', () => {
 
 
 function updateGame() {
-    counter = 0;
+    index = 0;
 
     for(let id in clientPlayers) {
         document.getElementById('scoreboard' + counter).style.display = "block";
-        let name = document.getElementById('playerName' + counter);
-        if(name != null){
-        name.innerHTML = clientPlayers[id].name;
-        }
-        let score = document.getElementById('playerScore' + counter);
-        if(score != null){
-            score.innerHTML = clientPlayers[id].score;
-        }
-        counter++;
+        document.getElementById('playerName' + counter).innerHTML = clientPlayers[id].name;
+        document.getElementById('playerScore' + counter).innerHTML = clientPlayers[id].score;
+        index += 1;
         console.log(clientPlayers[id].score)
     }
-    for(let i = counter; i < 8; i++) {
+    for(let i = index; i < 8; i++) {
         document.getElementById('scoreboard' + i).style.display = "none";
-        counter++;
+        index += 1;
     }
 }
 
