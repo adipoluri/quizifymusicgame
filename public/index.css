@@ -204,6 +204,7 @@ ul li a{
 }
 
 #player0{
+    align-content: center;
     display: flex;
     flex-wrap: wrap;
     flex-basis: auto;

@@ -119,7 +119,7 @@ function connected(socket){
 
 function startGame(id){
   
-  var counter = 30;
+  var counter = 3;
   var rounds = 0;
 
   rooms[id].inGame = true;
@@ -133,13 +133,13 @@ function startGame(id){
       io.to(player).emit('counter', counter);
     }
 
-    if (counter === 30) {
+    if (counter === 3) {
       Qdata = getNextQuestionData();
       for(let player in rooms[id].players) {
         io.to(player).compress(false).emit('nextRound', Qdata);
       }
     } else if(counter === 0) {
-      counter = 31;
+      counter = 4;
       rounds += 1;
     }
 
@@ -153,6 +153,10 @@ function startGame(id){
       }
 
       timeOut = setTimeout(function() {
+        for(let player in rooms[id].players) {
+          rooms[id].players[player].score = 0;
+        }
+
         for(let player in rooms[id].players) {
           io.to(player).emit('goToLobby', "LIGMA");
         }
