@@ -1,4 +1,7 @@
 // NET CODE //
+
+const e = require("express");
+
 //Establishing a connection with the server on port 5500y
 const socket = io.connect();
 
@@ -89,8 +92,7 @@ socket.on('updatePlayers', players => {
     console.log(clientPlayers);
     if(inLobby){
         updateLobby();
-    }
-    if(inGame){
+    } else if(inGame) {
         updateGame();
     }
 })
