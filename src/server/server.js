@@ -36,7 +36,7 @@ function connected(socket){
       console.log("Goodbye client with id "+ socket.id);
       console.log("Current number of players: "+ Object.keys(players).length);
       for(let room in rooms){
-        io.to(room).emit('updatePlayers', rooms[roomID].players);
+        io.to(room).emit('updatePlayers', rooms[room].players);
       }
   });
 
@@ -50,14 +50,19 @@ function connected(socket){
   socket.on('JoinRoomWithCode', data => {
     for(let roomID in rooms){
       if(roomID == data.roomID){
-        currentLobby =  rooms[roomID]
+        
         console.log("New client connected to Lobby, with id: "+ socket.id);
+
+        currentLobby =  rooms[roomID]
         currentLobby.players[socket.id] = new Player(data.name, roomID);
         players[socket.id] = currentLobby.players[socket.id];
+
         console.log("Current number of players in Lobby: "+ Object.keys(currentLobby.players).length);
         console.log("players dictionary: ", currentLobby.players);
+
         socket.join(data);
-        io.to(roomID).emit('updatePlayers', currentLobby.players);    
+        io.to(roomID).emit('updatePlayers', currentLobby.players);
+        io.to(socket.id).emit('joinedRoomSuccess', newRoomID);   
       }
     }
   });

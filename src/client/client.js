@@ -11,21 +11,20 @@ const roomCodeInput = document.getElementById('roomCodeInput');
 
 //Joining lobby for game
 creatRoomButton.addEventListener('click', () => {
-    //FOR TESTING ADD CHANGE
     socket.emit('CreateRoom', {});
-    document.getElementById('homeiFrame').src = 'lobby.html';
 });
 
 socket.on('createdRoomSuccess', roomID => {
     socket.emit('JoinRoomWithCode', {"roomID": roomID, "name": nameInput.value});
-    //CHANGE HTML PAGE
 })
 
 submitRoomCodeButton.addEventListener('click', () => {
-    //FOR TESTING ADD CHANGE
-    socket.emit('JoinRoomWithCode', {"roomID": textInput.value, "name": nameInput.value});
+    socket.emit('JoinRoomWithCode', {"roomID": roomCodeInput.value, "name": nameInput.value});
 });
 
+socket.on('joinedRoomSuccess', roomID => {
+    //CHANGE HTML PAGE
+})
 
 //Callback function fires on the event called 'serverToClient'
 socket.on('updatePlayers', players => {
