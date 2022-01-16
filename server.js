@@ -5,7 +5,7 @@ const { Server } = require("socket.io");
 const request = require('request')
 
 const app = express();
-const port = process.env.PORT || 5500;
+const port = 3000;//process.env.PORT || 5500;
 app.use(express.static('public'));
 const server = http.createServer(app);
 
@@ -71,7 +71,7 @@ function connected(socket){
 
         currentLobby = rooms[roomID]
 
-        if(currentLobby.playerCount >= 8){
+        if(currentLobby.playerCount >= 8 || currentLobby.inGame){
           return;
         }
         
@@ -94,7 +94,7 @@ function connected(socket){
   });
 
   socket.on('startGame', () => {
-    console.log("Game Started");
+    console.log("Game Started in Room: " + players[socket.id].lobby);
     for(let player in rooms[players[socket.id].lobby].players) {
       io.to(player).emit('gameStartedSuccess', "LIGMA");
     }
@@ -119,28 +119,27 @@ function connected(socket){
 
 function startGame(id){
   
-  var counter = 12;
+  var counter = 30;
   var rounds = 0;
 
+  rooms[id].inGame = true;
 
   var WinnerCountdown = setInterval(function(){
     if(rooms[id] == undefined){
       return;
     }
-    
-    console.log(counter)
 
     for(let player in rooms[id].players) {
       io.to(player).emit('counter', counter);
     }
 
-    if (counter === 12) {
+    if (counter === 30) {
       Qdata = getNextQuestionData();
       for(let player in rooms[id].players) {
         io.to(player).compress(false).emit('nextRound', Qdata);
       }
     } else if(counter === 0) {
-      counter = 13;
+      counter = 31;
       rounds += 1;
     }
 
@@ -160,6 +159,7 @@ function startGame(id){
         for(let player in rooms[id].players) {
           io.to(player).emit('updatePlayers', rooms[id].players);
         }
+        rooms[id].inGame = false;
       },10000);
   
     }
@@ -177,7 +177,7 @@ function getNextQuestionData(){
   song = data[songInd]
   returnVal['songURI'] = song['uri'].substring(14)
 
-  questionType = Math.floor(Math.random() * 4);
+  questionType = Math.floor(Math.random() * 3);
   switch(questionType){
     case 0:
       returnVal['question'] = "What is the name of this song?";
@@ -204,15 +204,6 @@ function getNextQuestionData(){
       for(let i = 1; i < 4; i++){
         newInt = Math.floor(Math.random() * data.length);
         returnVal['alt' + i] = data[newInt]['album'];
-      }
-      break;
-    case 3:
-      returnVal['question'] = "What is the average popularity score of this song?";
-      returnVal['answer'] = song['popularity'];
-
-      for(let i = 1; i < 4; i++){
-        newInt = Math.floor(Math.random() * data.length);
-        returnVal['alt' + i] = data[newInt]['popularity'];
       }
       break;
   }
@@ -248,6 +239,7 @@ class Room{
       this.id = id;
       this.players = {};
       this.playerCount = 0;
+      this.inGame = false;
   }
 }
 

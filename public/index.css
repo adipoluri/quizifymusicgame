@@ -213,6 +213,7 @@ ul li a{
 
 /** Point counter for game.html **/
 .points{
+    font-size: 26px;
     position: absolute;
     top: 200px;
     left: 85px;

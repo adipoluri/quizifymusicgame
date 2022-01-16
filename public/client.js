@@ -1,6 +1,6 @@
 // NET CODE //
 //Establishing a connection with the server on port 5500y
-const socket = io.connect();
+const socket = io('http://localhost:3000/');//io.connect();
 
 
 
@@ -71,7 +71,7 @@ socket.on('joinedRoomSuccess', roomID => {
 //Callback function fires on the event called 'uodatePlayers'
 socket.on('updatePlayers', players => {
 
-    playersFound = {};
+    let playersFound = {};
     for(let id in players) {
         if(clientPlayers[id] === undefined){
             clientPlayers[id] = new Player(players[id].name, players[id].score);
@@ -113,7 +113,7 @@ socket.on('gameStartedSuccess', roomID => {
 
 function updateLobby() {
 
-    counter = 0;
+    let counter = 0;
     for(let id in clientPlayers) {
         document.getElementById('p' + counter).style.display = "block";
         document.getElementById('p' + counter + "_name").innerHTML = clientPlayers[id].name;
@@ -132,9 +132,13 @@ button1.addEventListener('click', () => {
     if(notGuessed){
         if(questionData['answer'] == button1.textContent){
             socket.emit('addScore', {});
-            alert("Correct!");
+            swal({
+                icon: "success",
+              });
         } else {
-            alert("Wrong!, the correct answer is " + questionData['answer']);
+            swal("Wrong!, the correct answer is " + questionData['answer'], {
+                icon: 'error',
+            });
         }
     }
     notGuessed = false;
@@ -146,9 +150,13 @@ button2.addEventListener('click', () => {
     if(notGuessed){
         if(questionData['answer'] == button2.textContent){
             socket.emit('addScore', {});
-            alert("Correct!");
+            swal({
+                icon: "success",
+              });
         } else {
-            alert("Wrong!, the correct answer is " + questionData['answer']);
+            swal("Wrong!, the correct answer is " + questionData['answer'], {
+                icon: 'error',
+            });
         }
     }    
     notGuessed = false;
@@ -160,9 +168,13 @@ button3.addEventListener('click', () => {
     if(notGuessed){
         if(questionData['answer'] == button3.textContent){
             socket.emit('addScore', {});
-            alert("Correct!");
+            swal({
+                icon: "success",
+              });
         } else {
-            alert("Wrong!, the correct answer is " + questionData['answer']);
+            swal("Wrong!, the correct answer is " + questionData['answer'], {
+                icon: 'error',
+            });
         }
     }   
     notGuessed = false;
@@ -174,9 +186,13 @@ button4.addEventListener('click', () => {
     if(notGuessed){
         if(questionData['answer'] == button4.textContent){
             socket.emit('addScore', {});
-            alert("Correct!");
+            swal({
+                icon: "success",
+              });
         } else {
-            alert("Wrong!, the correct answer is " + questionData['answer']);
+            swal("Wrong!, the correct answer is " + questionData['answer'], {
+                icon: 'error',
+            });
         }
     }    
     notGuessed = false;
@@ -185,7 +201,7 @@ button4.addEventListener('click', () => {
 
 
 function updateGame() {
-    index = 0; 
+    let index = 0; 
     for(let id in clientPlayers) {
         document.getElementById('scoreboard' + index).style.display = "block";
         document.getElementById('playerName' + index).innerHTML = clientPlayers[id].name;
@@ -215,7 +231,7 @@ socket.on('nextRound', (data) => {
     document.getElementById("spotify").src = "https://open.spotify.com/embed/track/" + data['songURI'] + "?utm_source=generator&theme=0"
     document.getElementById("questionText").innerHTML = data['question'];
     
-    randomVal = Math.floor(Math.random() * 4 + 1);
+    let randomVal = Math.floor(Math.random() * 4 + 1);
     let counter = 1;
     for(let x = 1; x < 5; x++){
         if(x==randomVal) {
@@ -236,6 +252,18 @@ socket.on('EndGame', roomID => {
     document.getElementById('endDiv').style.display = "block"
     inLobby = false;
     inGame = false;
+
+    max = 0;
+    maxPlayer = "";
+    for(let player in clientPlayers){
+        if(clientPlayers[player].score > max){
+            max = clientPlayers[player].score;
+            maxPlayer = player;
+        }
+    }
+    document.getElementById('player0').style.display = "block";
+    document.getElementById('pl1').innerHTML = clientPlayers[maxPlayer].name;
+    document.getElementById('score1').innerHTML = max
 
     
 })

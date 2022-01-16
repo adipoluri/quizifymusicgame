@@ -185,7 +185,7 @@
 
     <div id="Winner">
       <div id="player0">
-        <h1>Player 1</h1>
+        <h1 id='pl1'>Player 1</h1>
         <img src="../img/player0.png">
         <p id="score1">0</p>
       </div>
@@ -194,46 +194,33 @@
     <div id="scoreboardTwo">
       <div id="scoreboardDiv2">
         
-        <div>
-          <h1>Player 2</h1>
+        <div id='res2'>
           <img src="../img/player1.png">
-          <p id="score2">0</p>
         </div>
         
-        <div>
-          <h1>Player 3</h1>
+        <div id='res3'>
           <img src="../img/player2.png">
-          <p id="score3">0</p>
         </div>
         
-        <div>
-          <h1>Player 4</h1>
+        <div id='res4'>
           <img src="../img/player3.png">
-          <p id="score4">0</p>
         </div>
         
-        <div>
-          <h1>Player 5</h1>
+        <div id='res5'>
           <img src="../img/player4.png">
-          <p id="score5">0</p>
         </div>
         
-        <div>
-          <h1>Player 6</h1>
+        <div id='res6'>
           <img src="../img/player5.png">
-          <p id="score6">0</p>
         </div>
         
-        <div>
-          <h1>Player 7</h1>
+        <div id='res7'>
           <img src="../img/player6.png">
-          <p id="score7">0</p>
         </div>
         
-        <div>
-          <h1>Player 8</h1>
+        <div id='res8'>
           <img src="../img/player7.png">
-          <p id="score8">0</p>
+
         </div>
   
       </div>
@@ -242,9 +229,9 @@
     <h1 id="goodbyeMsg">YOU WILL BE RETURNED TO THE MAIN MENU IN A FEW SECONDS...</h1>
   </div>
 
-
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="https://cdn.socket.io/4.4.1/socket.io.js"></script>
   <script src="player.js"></script>
-  <script src="client.js"></script>
+  <script type="module" src="client.js"></script>
 </body>
 </html>
