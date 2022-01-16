@@ -9,9 +9,18 @@ body{
     background-color: black;
     color:white;
 }
-#banner>h1{
-    padding:0.5em;
-    margin:0%;
+#imageBanner>h1{
+    display: inline-block;
+    margin: 0%;
+}
+
+#imageBanner{
+    display:inline-block;
+}
+
+#title{
+    justify-content: center;
+    padding-bottom: 50px;
 }
 
 #button{
@@ -50,8 +59,14 @@ body{
 ul li{
     list-style: none;
     display: inline-block;
-    float: left;
     height: 5em;
+}
+
+#name{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
 }
 
 ul li a{
