@@ -13,6 +13,7 @@ const roomCodeInput = document.getElementById('roomCodeInput');
 creatRoomButton.addEventListener('click', () => {
     //FOR TESTING ADD CHANGE
     socket.emit('CreateRoom', {});
+    document.getElementById('homeiFrame').src = 'lobby.html';
 });
 
 socket.on('createRoomSuccess', roomID => {

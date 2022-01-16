@@ -23,7 +23,7 @@ body{
     padding-bottom: 50px;
 }
 
-#button{
+#joinRoomButton, #createRoomButton{
     font-family: 'Righteous', cursive;
     background-color: #DB8585;
     border: 1px solid black;
