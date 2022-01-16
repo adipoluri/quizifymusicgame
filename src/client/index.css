@@ -170,29 +170,39 @@ ul li a{
 }
 
 /** Point counter for game.html **/
-#penis{
+.points{
     position: absolute;
     top: 200px;
-    left: 70px;
+    left: 85px;
+}
+
+.pName{
+    text-align: center;
 }
 
 #player{
     width: 100%;
     padding-left: 0.0008%;
 }
-
+/** Players in lobby.html, aligns them into the center of screen, should work with mobile devices **/
 #playerDiv{
-    display: flex;
-    flex-wrap: wrap;
-    flex-basis: auto;
-    margin-left: 15.5%;
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    display: inline-flex;
+    flex-direction:row;
+    flex-wrap:wrap;
 }
 
 /** Players in game.html, aligns them into the center of screen, should work with mobile devices **/
 #scoreboardDiv{
+    width: 100%;
     justify-content: center;
-    display: flex;
-    flex-direction: row;
+    align-content: center;
+    justify-items: center;
+    display: inline-flex;
+    flex-direction:row;
     flex-wrap:wrap;
 }
 

@@ -21,6 +21,9 @@ const roomCodeInput = document.getElementById('roomCodeInput');
 
 //LOBBY JOINING CODE
 creatRoomButton.addEventListener('click', () => {
+    document.getElementById('home').style.display = "none"
+    document.getElementById('lobbyDiv').style.display = "block"
+    document.getElementById('gameDiv').style.display = "none"
     socket.emit('CreateRoom', {});
 });
 
