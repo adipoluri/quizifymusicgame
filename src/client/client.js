@@ -16,7 +16,7 @@ creatRoomButton.addEventListener('click', () => {
     document.getElementById('homeiFrame').src = 'lobby.html';
 });
 
-socket.on('createRoomSuccess', roomID => {
+socket.on('createdRoomSuccess', roomID => {
     socket.emit('JoinRoomWithCode', {"roomID": roomID, "name": nameInput.value});
     //CHANGE HTML PAGE
 })
