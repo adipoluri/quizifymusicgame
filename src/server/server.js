@@ -2,6 +2,7 @@ const fs = require('fs');
 const express = require('express');
 const http = require('http');
 const { Server } = require("socket.io");
+const request = require('request')
 
 const app = express();
 const port = 3000;
@@ -21,7 +22,7 @@ server.listen(port, () => {
 //Data structure for players
 let rooms = {};
 let players = {};
-let ket = getKeys();
+let data = getData();
 
 io.on('connection',connected);
 
@@ -100,9 +101,130 @@ function connected(socket){
     for(let player in rooms[players[socket.id].lobby].players) {
       io.to(player).emit('updatePlayers', currentLobby.players);
     }
-  })
+    startGame(players[socket.id].lobby);
+  });
+
+  
+  socket.on('addScore', () => {
+ 
+    rooms[players[socket.id].lobby].players[socket.id].score += 1;
+    for(let player in rooms[players[socket.id].lobby].players) {
+      io.to(player).emit('updatePlayers', rooms[players[socket.id].lobby].players);
+    }
+  });
+
 
 }
+
+function startGame(id){
+  
+  var counter = 30;
+  var rounds = 0;
+
+
+  var WinnerCountdown = setInterval(function(){
+    if(rooms[id] == undefined){
+      return;
+    }
+    
+    console.log(counter)
+
+    for(let player in rooms[id].players) {
+      io.to(player).emit('counter', counter);
+    }
+
+    if (counter === 30) {
+      Qdata = getNextQuestionData();
+      for(let player in rooms[id].players) {
+        io.to(player).compress(false).emit('nextRound', Qdata);
+      }
+    } else if(counter === 0) {
+      counter = 31;
+      rounds += 1;
+    }
+
+    counter--;
+
+    if (rounds ===  10) {
+      clearInterval(WinnerCountdown);
+
+      for(let player in rooms[id].players) {
+        io.to(player).emit('EndGame', "LIGMA");
+      }
+
+      timeOut = setTimeout(function() {
+        for(let player in rooms[id].players) {
+          io.to(player).emit('goToLobby', "LIGMA");
+        }
+        for(let player in rooms[id].players) {
+          io.to(player).emit('updatePlayers', rooms[id].players);
+        }
+      },10000);
+  
+    }
+    
+  }, 
+  1000);
+    
+}
+
+
+
+function getNextQuestionData(){
+  let returnVal = {};
+  songInd = Math.floor(Math.random() * data.length);
+  song = data[songInd]
+  returnVal['songURI'] = song['uri'].substring(14)
+
+  questionType = Math.floor(Math.random() * 4);
+  switch(questionType){
+    case 0:
+      returnVal['question'] = "What is the name of this song?";
+      returnVal['answer'] = song['name'];
+
+      for(let i = 1; i < 4; i++){
+        newInt = Math.floor(Math.random() * data.length);
+        returnVal['alt' + i] = data[newInt]['name'];
+      }
+      break;
+    case 1:
+      returnVal['question'] = "Who is the artist?";
+      returnVal['answer'] = song['artist_name'];
+
+      for(let i = 1; i < 4; i++){
+        newInt = Math.floor(Math.random() * data.length);
+        returnVal['alt' + i] = data[newInt]['artist_name'];
+      }
+      break;
+    case 2:
+      returnVal['question'] = "What album is this song from?";
+      returnVal['answer'] = song['album'];
+
+      for(let i = 1; i < 4; i++){
+        newInt = Math.floor(Math.random() * data.length);
+        returnVal['alt' + i] = data[newInt]['album'];
+      }
+      break;
+    case 3:
+      returnVal['question'] = "What is the average popularity score of this song?";
+      returnVal['answer'] = song['popularity'];
+
+      for(let i = 1; i < 4; i++){
+        newInt = Math.floor(Math.random() * data.length);
+        returnVal['alt' + i] = data[newInt]['popularity'];
+      }
+      break;
+  }
+  return returnVal;
+
+}
+
+
+
+
+
+
+/// Helper Functions
 
 
 function makeRoomId() {
@@ -138,27 +260,9 @@ class Player{
 }
 
 //Obtain API Keys
-function getKeys(){
-    let rawdata = fs.readFileSync('src\\server\\apikeys.json');
+function getData(){
+    let rawdata = fs.readFileSync('src\\server\\songData.json');
     let apiKeys = JSON.parse(rawdata);
-    console.log(apiKeys);
     return apiKeys;
 }
 
-
-// var authOptions = {
-//   url: 'https://accounts.spotify.com/api/token',
-//   headers: {
-//     'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64'))
-//   },
-//   form: {
-//     grant_type: 'client_credentials'
-//   },
-//   json: true
-// };
-
-// request.post(authOptions, function(error, response, body) {
-//   if (!error && response.statusCode === 200) {
-//     var token = body.access_token;
-//   }
-// });
