@@ -7,7 +7,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
-  <script src="app.js"></script>
 </head>
 <body>
   
@@ -41,11 +40,12 @@
     </div>
 
     <div id="buttonDiv">
-      <button href="lobby.html" id="joinRoomButton" onclick="showHideRoomCode()">Enter Code</button>
+      <button id="joinRoomButton">Enter Join Code</button>
       <button id="createRoomButton">Create Room</button>
-      <div id="inputBox">
-        <input class="hide" id="roomCodeInput" type="text" id="textInput"/>
-        <button class="hide" id="submitRoomCode">Join Room</button>
+      <div id="inputBox" style="display:none">
+        <br>
+          <input id="roomCodeInput" type="text" class="form__input2" placeholder="Room Code"/>
+          <button id="submitRoomCode">Join Room</button>
       </div>
     </div>
   </div>
@@ -173,6 +173,5 @@
   <script src="https://cdn.socket.io/4.4.1/socket.io.js"></script>
   <script src="player.js"></script>
   <script src="client.js"></script>
-  <script src="https://unpkg.com/vue@next"></script>
 </body>
 </html>

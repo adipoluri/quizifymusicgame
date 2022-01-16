@@ -17,6 +17,21 @@ const creatRoomButton = document.getElementById('createRoomButton');
 const nameInput = document.getElementById('playerName');
 const submitRoomCodeButton = document.getElementById('submitRoomCode');
 const roomCodeInput = document.getElementById('roomCodeInput');
+const joinRoomButton = document.getElementById('joinRoomButton');
+
+function showHideRoomCode(){
+    document.getElementById('inputBox').style.display = "block";
+}
+
+function alertBoxExit(){
+    if(confirm("Are you sure you want to exit?") == true){
+        location.replace("index.html");
+    }
+}
+
+joinRoomButton.addEventListener('click', () => {
+    showHideRoomCode();
+});
 
 
 //LOBBY JOINING CODE

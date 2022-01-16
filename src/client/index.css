@@ -40,7 +40,7 @@ body{
     transition: all 0.3s;
 }
 
-#joinRoomButton:hover, #createRoomButton:hover, #button1:hover, #button2:hover, #button3:hover, #button4:hover{
+#joinRoomButton:hover, #createRoomButton:hover, #button1:hover, #button2:hover, #button3:hover, #button4:hover, #submitRoomCode:hover{
     color:#ffffff;
     background-color:#000000;
     }
@@ -90,7 +90,7 @@ ul li a{
     text-align: center;
 }
 
-.hide{
+.inputBox{
     display: none;
 }
 
@@ -110,7 +110,7 @@ ul li a{
   }
   
   .form__input {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Righteous', cursive;
     color: #333;
     font-size: 1.2rem;
       margin: 0 auto;
@@ -130,6 +130,41 @@ ul li a{
     -webkit-transform: translateY(-4rem);
     transform: translateY(-4rem);
   }
+
+
+  .form__label2 {
+    font-family: 'Righteous', cursive;
+    font-size: 1.2rem;
+    margin-left: 2rem;
+    margin-top: 0.7rem;
+    display: block;
+    transition: all 0.3s;
+    transform: translateY(0rem);
+  }
+  
+  .form__input2 {
+    font-family: 'Righteous', cursive;
+    color: #333;
+    font-size: 1.2rem;
+      margin: 0 auto;
+    padding: 0.5rem 0.5rem;
+    border-radius: 0.2rem;
+    background-color: rgb(255, 255, 255);
+    border: #19E68C;
+    width: 20%;
+    display: block;
+    border-bottom: 0.3rem solid transparent;
+    transition: all 0.3s;
+  }
+  
+  .form__input2:placeholder-shown + .form__label2 {
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: translateY(-4rem);
+    transform: translateY(-4rem);
+  }
+
+
   
 #playerTable{
     color: black;
@@ -245,3 +280,23 @@ ul li a{
     text-align: center;
 }
 
+#submitRoomCode{
+    display: inline-flex;
+    flex-basis: 50%;
+    font-family: 'Righteous', cursive;
+    background-color: #FFFFFF;
+    border:0.1em solid #FFFFFF;
+    color: black;
+    font-weight:300;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 0.5em;
+    box-sizing: border-box;
+    width: auto;
+    height: auto;
+    transition: all 0.3s;
+}
