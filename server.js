@@ -5,7 +5,7 @@ const { Server } = require("socket.io");
 const request = require('request')
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 5500;
 const server = http.createServer(app);
 
 const io = new Server(server, {
@@ -14,6 +14,11 @@ const io = new Server(server, {
     methods: ["GET", "POST"]
   }
 });
+
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+})
+
 
 server.listen(port, () => {
   console.log('Listen on port 3000');
@@ -27,9 +32,6 @@ let data = getData();
 io.on('connection',connected);
 
 //Hello World line taken from the express website
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
 
 //The 'connection' is a reserved event name in socket.io
 //For whenever a connection is established between the server and a client
@@ -261,7 +263,7 @@ class Player{
 
 //Obtain API Keys
 function getData(){
-    let rawdata = fs.readFileSync('src\\server\\songData.json');
+    let rawdata = fs.readFileSync('songData.json');
     let apiKeys = JSON.parse(rawdata);
     return apiKeys;
 }
