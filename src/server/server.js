@@ -88,6 +88,12 @@ function connected(socket){
       }
     }
   });
+
+  socket.on('startGame', () => {
+    console.log("Game Started");
+    io.to(socket.id).emit('gameStartedSuccess', "LIGMA");
+  })
+
 }
 
 

@@ -43,6 +43,7 @@ submitRoomCodeButton.addEventListener('click', () => {
 socket.on('joinedRoomSuccess', roomID => {
     document.getElementById('home').style.display = "none"
     document.getElementById('lobbyDiv').style.display = "block"
+    document.getElementById('gameDiv').style.display = "none"
     document.getElementById('joinCode').innerHTML = "The Join Code is: " + roomID;
     inLobby = true;
     inGame = false;
@@ -77,11 +78,12 @@ socket.on('updatePlayers', players => {
 
 //LOBBY CODE
 const startGameButton = document.getElementById('startGameButton');
-creatRoomButton.addEventListener('click', () => {
+startGameButton.addEventListener('click', () => {
     socket.emit('startGame', {});
 });
 
 socket.on('gameStartedSuccess', roomID => {
+    document.getElementById('home').style.display = "none"
     document.getElementById('lobbyDiv').style.display = "none"
     document.getElementById('gameDiv').style.display = "block"
     inLobby = false;
