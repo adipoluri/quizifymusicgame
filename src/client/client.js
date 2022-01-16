@@ -17,11 +17,19 @@ creatRoomButton.addEventListener('click', () => {
 });
 
 socket.on('createdRoomSuccess', roomID => {
-    socket.emit('JoinRoomWithCode', {"roomID": roomID, "name": nameInput.value});
+    let name = nameInput.value
+    if(name == 'Guest'){
+        name = 'Guest' + Math.floor(Math.random() * 1000);
+    }
+    socket.emit('JoinRoomWithCode', {"roomID": roomID, "name": name});
 })
 
 submitRoomCodeButton.addEventListener('click', () => {
-    socket.emit('JoinRoomWithCode', {"roomID": roomCodeInput.value, "name": nameInput.value});
+    let name = nameInput.value
+    if(name == 'Guest'){
+        name = 'Guest' + Math.floor(Math.random() * 1000);
+    }
+    socket.emit('JoinRoomWithCode', {"roomID": roomCodeInput.value, "name": name});
 });
 
 socket.on('joinedRoomSuccess', roomID => {

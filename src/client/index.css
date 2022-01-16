@@ -3,6 +3,7 @@ body{
     margin: 0;
     padding: 0;
     background-color: #19E68C;
+    background-image: url("../img/bg.png");
 }
 #banner{
     height: 5em;

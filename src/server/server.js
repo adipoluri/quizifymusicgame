@@ -38,6 +38,7 @@ function connected(socket){
       for(let room in rooms){
         io.to(room).emit('updatePlayers', rooms[room].players);
       }
+      console.log(rooms);
   });
 
   socket.on('CreateRoom', () => {
