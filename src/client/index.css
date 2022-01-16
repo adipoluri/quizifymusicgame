@@ -21,7 +21,7 @@ body{
     height:100%;
 }
 
-#joinRoomButton, #createRoomButton, #button1, #button2, #button3, #button4{
+#joinRoomButton, #createRoomButton, #button1, #button2, #button3, #button4, #startGameButton{
     font-family: 'Righteous', cursive;
     background-color: #FFFFFF;
     border:0.1em solid #FFFFFF;
@@ -40,7 +40,7 @@ body{
     transition: all 0.3s;
 }
 
-#joinRoomButton:hover, #createRoomButton:hover, #button1:hover, #button2:hover, #button3:hover, #button4:hover, #submitRoomCode:hover{
+#joinRoomButton:hover, #createRoomButton:hover, #button1:hover, #button2:hover, #button3:hover, #startGameButton:hover, #button4:hover{
     color:#ffffff;
     background-color:#000000;
     }
@@ -172,10 +172,10 @@ ul li a{
 
 #joinCode{
     font-family: 'Righteous', cursive;
-    background-color: black;
-    color: white;
+    color: black;
     margin: auto;
-    width: 50%;
+    width: 100%;
+    font-size: 64px;
     padding: 10px;
 }
 
@@ -197,8 +197,6 @@ ul li a{
 
 #startGameButton{
     font-family: 'Righteous', cursive;
-    background-color: black;
-    color: white;
     margin: auto;
     width: 100%;
     padding: 10px;
