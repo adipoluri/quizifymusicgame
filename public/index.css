@@ -204,10 +204,12 @@ ul li a{
 }
 
 #player0{
-    align-content: center;
     display: flex;
     flex-wrap: wrap;
     flex-basis: auto;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     justify-content: center;
     margin-bottom: 3%;
 }
@@ -234,6 +236,7 @@ ul li a{
     justify-content: center;
     align-content: center;
     justify-items: center;
+    text-align: center;
     display: inline-flex;
     flex-direction:row;
     flex-wrap:wrap;
@@ -263,6 +266,8 @@ ul li a{
 
 #scoreboardDiv>div{
     position: relative;
+    align-items: center;
+    text-align: center;
 }
 
 #question{

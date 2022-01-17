@@ -131,7 +131,7 @@ const button1 = document.getElementById('button1');
 button1.addEventListener('click', () => {
     if(notGuessed){
         if(questionData['answer'] == button1.textContent){
-            socket.emit('addScore', {});
+            socket.emit('addScore', document.getElementById('counter').innerHTML);
             swal({
                 icon: "success",
               });
@@ -149,7 +149,7 @@ const button2 = document.getElementById('button2');
 button2.addEventListener('click', () => {
     if(notGuessed){
         if(questionData['answer'] == button2.textContent){
-            socket.emit('addScore', {});
+            socket.emit('addScore', document.getElementById('counter').innerHTML);
             swal({
                 icon: "success",
               });
@@ -167,7 +167,7 @@ const button3 = document.getElementById('button3');
 button3.addEventListener('click', () => {
     if(notGuessed){
         if(questionData['answer'] == button3.textContent){
-            socket.emit('addScore', {});
+            socket.emit('addScore', document.getElementById('counter').innerHTML);
             swal({
                 icon: "success",
               });
@@ -185,7 +185,7 @@ const button4 = document.getElementById('button4');
 button4.addEventListener('click', () => {
     if(notGuessed){
         if(questionData['answer'] == button4.textContent){
-            socket.emit('addScore', {});
+            socket.emit('addScore', document.getElementById('counter').innerHTML);
             swal({
                 icon: "success",
               });

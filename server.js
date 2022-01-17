@@ -106,9 +106,9 @@ function connected(socket){
   });
 
   
-  socket.on('addScore', () => {
- 
-    rooms[players[socket.id].lobby].players[socket.id].score += 1;
+  socket.on('addScore', (data) => {
+    console.log(data)
+    rooms[players[socket.id].lobby].players[socket.id].score += parseInt(data.replace('s Left!',''));
     for(let player in rooms[players[socket.id].lobby].players) {
       io.to(player).emit('updatePlayers', rooms[players[socket.id].lobby].players);
     }
@@ -119,7 +119,7 @@ function connected(socket){
 
 function startGame(id){
   
-  var counter = 3;
+  var counter = 20;
   var rounds = 0;
 
   rooms[id].inGame = true;
@@ -133,13 +133,13 @@ function startGame(id){
       io.to(player).emit('counter', counter);
     }
 
-    if (counter === 3) {
+    if (counter === 20) {
       Qdata = getNextQuestionData();
       for(let player in rooms[id].players) {
         io.to(player).compress(false).emit('nextRound', Qdata);
       }
     } else if(counter === 0) {
-      counter = 4;
+      counter = 21;
       rounds += 1;
     }
 
