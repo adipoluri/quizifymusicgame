@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/adipoluri/nwhacks2022.git"
+    "url": "git+https://github.com/adipoluri/quizifymusicgame.git"
   },
-  "author": "",
+  "author": "Adi Poluri, Alex Vo, Jayden Cang",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/adipoluri/nwhacks2022/issues"
+    "url": "https://github.com/adipoluri/quizifymusicgame/issues"
   },
-  "homepage": "https://github.com/adipoluri/nwhacks2022#readme",
+  "homepage": "https://github.com/adipoluri/quizifymusicgame#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.2",
